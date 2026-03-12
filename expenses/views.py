@@ -43,6 +43,7 @@ def switch_profile(request):
         request.session.pop('username', None)
         messages.info(request, 'Profile saved. You can switch or create another account anytime.')
     return redirect('username-entry')
+    return render(request, 'expenses/username.html', {'form': form})
 
 
 def _date_filter(range_filter: str):
