@@ -1,0 +1,87 @@
+{% extends 'expenses/base.html' %}
+
+{% block content %}
+<div class="retro-card p-4 mb-4">
+    <h2 class="retro-heading">Welcome back, {{ username }}!</h2>
+    <p class="mb-0">Track your spending like it's 2004.</p>
+</div>
+
+<div class="row g-4 dashboard-grid align-items-stretch">
+    <div class="col-xl-5 col-lg-6">
+        <section class="retro-card p-3 h-100 add-expense-card">
+            <h3 class="retro-heading small">➕ Add Expense</h3>
+            <form method="post" class="mt-3">
+                {% csrf_token %}
+                <div class="mb-2"><label class="form-label">Item / Service</label>{{ form.item_name }}</div>
+                <div class="mb-2"><label class="form-label">Price</label>{{ form.amount }}</div>
+                <div class="mb-2"><label class="form-label">Date</label>{{ form.date_created }}</div>
+                <div class="mb-2"><label class="form-label">Category</label>{{ form.category }}</div>
+                <div class="mb-2"><label class="form-label">Notes</label>{{ form.notes }}</div>
+                <button class="btn retro-btn w-100" type="submit">Save Expense</button>
+            </form>
+        </section>
+    </div>
+
+    <div class="col-xl-7 col-lg-6">
+        <section class="retro-card p-3 mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+                <h3 class="retro-heading small mb-0">📒 Expense List</h3>
+                <div class="filter-buttons d-flex gap-1 flex-wrap">
+                    <a href="?range=daily" class="btn btn-sm {% if range_filter == 'daily' %}retro-btn{% else %}retro-btn-alt{% endif %}">Daily</a>
+                    <a href="?range=weekly" class="btn btn-sm {% if range_filter == 'weekly' %}retro-btn{% else %}retro-btn-alt{% endif %}">Weekly</a>
+                    <a href="?range=monthly" class="btn btn-sm {% if range_filter == 'monthly' %}retro-btn{% else %}retro-btn-alt{% endif %}">Monthly</a>
+                    <a href="?range=yearly" class="btn btn-sm {% if range_filter == 'yearly' %}retro-btn{% else %}retro-btn-alt{% endif %}">Yearly</a>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-dark table-striped align-middle">
+                    <thead><tr><th>Date</th><th>Item</th><th>Category</th><th>Price</th><th>Actions</th></tr></thead>
+                    <tbody>
+                        {% for expense in expenses %}
+                        <tr>
+                            <td>{{ expense.date_created }}</td>
+                            <td>{{ expense.item_name }}</td>
+                            <td><span class="badge category-badge cat-{{ expense.category }}">{{ expense.get_category_display }}</span></td>
+                            <td>${{ expense.amount }}</td>
+                            <td>
+                                <a class="btn btn-sm retro-btn-alt" href="{% url 'expense-edit' expense.id %}">Edit</a>
+                                <form method="post" action="{% url 'expense-delete' expense.id %}" class="d-inline">
+                                    {% csrf_token %}
+                                    <button class="btn btn-sm retro-danger" type="submit">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr><td colspan="5">No expenses in this range.</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="retro-card p-3 mb-4">
+            <h3 class="retro-heading small">📊 Spending Insights</h3>
+            <div class="row g-3 mt-1">
+                <div class="col-md-6"><div class="insight-card">Total Spending: <strong>${{ total_spending|floatformat:2 }}</strong></div></div>
+                <div class="col-md-6"><div class="insight-card">Top Category: <strong>{{ top_category }}</strong></div></div>
+                <div class="col-md-6"><div class="insight-card">Avg Daily: <strong>${{ average_daily|floatformat:2 }}</strong></div></div>
+                <div class="col-md-6"><div class="insight-card">Change vs Last Month: <strong>${{ spending_change|floatformat:2 }}</strong></div></div>
+            </div>
+        </section>
+
+        <section class="retro-card p-3">
+            <h3 class="retro-heading small">🛰️ Site Stats</h3>
+            <div class="row g-3">
+                <div class="col-md-6"><div class="insight-card">Total Expenses Logged: <strong>{{ stats.total_entries }}</strong></div></div>
+                <div class="col-md-6"><div class="insight-card">Current Month Spend: <strong>${{ stats.current_month_total|floatformat:2 }}</strong></div></div>
+            </div>
+            <div class="row g-4 mt-2">
+                <div class="col-md-6"><canvas id="categoryPie"></canvas></div>
+                <div class="col-md-6"><canvas id="monthlyLine"></canvas></div>
+            </div>
+        </section>
+    </div>
+</div>
+{{ category_totals_json|json_script:'category-data' }}
+{{ monthly_data_json|json_script:'monthly-data' }}
+{% endblock %}
