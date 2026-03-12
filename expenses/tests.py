@@ -28,3 +28,22 @@ class DashboardFlowTests(TestCase):
         )
         self.assertContains(response, 'Expense added to your retro ledger!')
         self.assertEqual(Expense.objects.count(), 1)
+
+    def test_saved_profiles_visible_and_switch_profile(self):
+        Expense.objects.create(
+            username='Alex',
+            item_name='Bus Pass',
+            amount='40.00',
+            date_created=date.today(),
+            category='transport',
+            notes='',
+        )
+
+        self.client.post(reverse('username-entry'), {'username': 'Jared'})
+        response = self.client.get(reverse('username-entry'))
+        self.assertContains(response, 'Alex')
+
+        switch_response = self.client.post(reverse('switch-profile'), follow=True)
+        self.assertContains(switch_response, 'Profile saved. You can switch or create another account anytime.')
+        session = self.client.session
+        self.assertNotIn('username', session)

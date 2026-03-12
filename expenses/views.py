@@ -13,6 +13,13 @@ from .models import Expense
 
 
 def username_entry(request):
+    saved_profiles = (
+        Expense.objects.exclude(username='')
+        .values_list('username', flat=True)
+        .distinct()
+        .order_by('username')
+    )
+
     if request.method == 'POST':
         form = UsernameForm(request.POST)
         if form.is_valid():
@@ -20,6 +27,22 @@ def username_entry(request):
             return redirect('dashboard')
     else:
         form = UsernameForm(initial={'username': request.session.get('username', '')})
+    return render(
+        request,
+        'expenses/username.html',
+        {
+            'form': form,
+            'saved_profiles': saved_profiles,
+            'active_username': request.session.get('username'),
+        },
+    )
+
+
+def switch_profile(request):
+    if request.method == 'POST':
+        request.session.pop('username', None)
+        messages.info(request, 'Profile saved. You can switch or create another account anytime.')
+    return redirect('username-entry')
     return render(request, 'expenses/username.html', {'form': form})
 
 

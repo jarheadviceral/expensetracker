@@ -1,5 +1,14 @@
 {% extends 'expenses/base.html' %}
 
+{% block page_content_class %}auth-page{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center w-100">
+    <div class="col-xl-6 col-lg-7">
+        <section class="retro-card text-center p-4 p-md-5">
+            <h2 class="retro-heading mb-3">Create your profile</h2>
+            <p class="mb-4">Set your retro username to start tracking spending.</p>
+            <form method="post" class="mb-4">
 {% block content %}
 <div class="row justify-content-center">
     <div class="col-lg-6">
@@ -14,6 +23,23 @@
                 </div>
                 <button class="btn retro-btn w-100" type="submit">Enter Dashboard</button>
             </form>
+
+            {% if saved_profiles %}
+                <div class="saved-profiles text-start">
+                    <h3 class="retro-heading small mb-3">Saved profiles</h3>
+                    <div class="d-flex flex-wrap gap-2">
+                        {% for profile in saved_profiles %}
+                            <form method="post" class="d-inline">
+                                {% csrf_token %}
+                                <input type="hidden" name="username" value="{{ profile }}">
+                                <button type="submit" class="btn btn-sm {% if active_username == profile %}retro-btn{% else %}retro-btn-alt{% endif %}">
+                                    {{ profile }}
+                                </button>
+                            </form>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
         </section>
     </div>
 </div>
