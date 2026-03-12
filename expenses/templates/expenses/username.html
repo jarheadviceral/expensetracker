@@ -1,0 +1,20 @@
+{% extends 'expenses/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <section class="retro-card text-center p-4">
+            <h2 class="retro-heading mb-3">Create your profile</h2>
+            <p class="mb-4">Set your retro username to start tracking spending.</p>
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3 text-start">
+                    <label class="form-label">Username</label>
+                    {{ form.username }}
+                </div>
+                <button class="btn retro-btn w-100" type="submit">Enter Dashboard</button>
+            </form>
+        </section>
+    </div>
+</div>
+{% endblock %}
