@@ -1,260 +1,449 @@
-:root {
-    --wallpaper-image: url("images/bliss.jpg") center/cover no-repeat
+/* =========================
+   HERO TITLE (XP STYLE)
+========================= */
 
-    --bg-deep: #06193a;
-    --bg-panel: rgba(9, 30, 66, 0.86);
+.hero-title{
 
-    --cyan: #7ee8ff;
-    --pink: #f088d8;
-    --sky: #4bb6ff;
-    --electric: #2286ff;
+text-align:center;
 
-    --text: #eaf5ff;
+margin:40px 0 50px 0;
+
+color:#ffffff;
+
+text-shadow:
+0 2px 6px rgba(0,0,0,.35);
+
 }
 
-/* BASE PAGE */
+.hero-title h1 {
+    font-size: 52px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    min-height: 100vh;
-    color: var(--text);
-
-    background-image:
-        linear-gradient(rgba(13, 42, 71, 0.55), rgba(20, 10, 60, 0.65)),
-        var(--wallpaper-image);
-
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    text-shadow:
+        0 2px 10px rgba(0,0,0,0.15),
+        0 0 25px rgba(255,255,255,0.45);
 }
 
-/* FIXED BLURRED WALLPAPER */
+.hero-title p {
+    font-size: 22px;
+    font-weight: 500;
 
-.bg-wallpaper {
-    position: fixed;
-    inset: 0;
-    z-index: -2;
+    opacity: 0.9;
 
-    background-image: var(--wallpaper-image);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-
-    filter: blur(5px) saturate(1.05);
-    transform: scale(1.05);
+    text-shadow:
+        0 1px 6px rgba(0,0,0,0.2);
 }
 
-/* TOP BAR */
-
-.topbar {
-    background: linear-gradient(180deg, #36a5ff, #1872dc);
-    border-bottom: 3px solid var(--cyan);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.45);
-    padding: 14px 0;
-}
-
-/* HEADINGS */
-
-.app-title,
-.retro-heading {
-    font-family: "Press Start 2P", cursive;
-    text-shadow: 2px 2px #031737;
-}
-
-.app-title {
-    font-size: 1rem;
-}
-
-.retro-heading {
-    font-size: .9rem;
-    color: #ffe88e;
-}
-
-.retro-heading.small {
-    font-size: .72rem;
-}
-
-/* USERNAME */
-
-.username-pill {
-    background: #04265e;
-    border: 2px solid var(--cyan);
-    border-radius: 999px;
-    padding: 6px 14px;
-    font-weight: bold;
-    text-shadow: 2px 2px #021734;
-}
-
-/* PAGE LAYOUT */
-
-.page-content {
+.hero-title {
     position: relative;
-    z-index: 1;
+    text-align: center;
+    margin: 60px 0 70px;
+    color: white;
 }
 
-.auth-page {
-    min-height: calc(100vh - 145px);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.hero-title::before {
+    content: "";
+    position: absolute;
+    inset: -40px -100px;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(255,255,255,0.25) 0%,
+        rgba(255,255,255,0.12) 40%,
+        rgba(255,255,255,0.02) 70%,
+        transparent 90%
+    );
+    filter: blur(30px);
+    z-index: -1;
 }
 
-/* RETRO CARD */
+/* =========================
+   GLOBAL BACKGROUND
+========================= */
 
-.retro-card {
-    background: var(--bg-panel);
-    border: 2px solid var(--cyan);
-    border-radius: 18px;
+html{
+    height:100%;
 
-    box-shadow:
-        0 0 0 3px rgba(240,136,216,.65),
-        0 16px 30px rgba(0,0,0,.35);
-
-    backdrop-filter: blur(3px);
+    background:
+    linear-gradient(rgba(255,255,255,.12),rgba(255,255,255,.12)),
+    url("../images/bliss.jpg")
+    center/cover no-repeat fixed;
 }
 
-/* BUTTONS */
+body{
+    min-height:100%;
+    font-family:"Inter","Segoe UI",sans-serif;
+    color:#1d3557;
 
-.retro-btn,
-.retro-btn-alt,
-.retro-danger {
-    border-radius: 14px;
-    color: #fff;
-
-    transition:
-        transform .2s ease,
-        box-shadow .2s ease;
+    background:transparent !important;
 }
 
-.retro-btn {
-    background: linear-gradient(180deg, #ff4eb8, #9e4ac9);
-    border: 1px solid #ffc4ef;
+/* remove bootstrap background layers */
+
+.container,
+.page-content,
+main{
+    background:transparent !important;
 }
 
-.retro-btn-alt {
-    background: linear-gradient(180deg, #3f8cff, #2450b8);
-    border: 1px solid #b9d6ff;
+/* =========================
+   TOP BAR
+========================= */
+
+.topbar{
+
+    background:linear-gradient(to bottom,#4aa3ff,#2a6ddf);
+
+    border-bottom:1px solid rgba(255,255,255,.6);
+
+    box-shadow:0 3px 10px rgba(0,0,0,.2);
+
+    padding:12px 0;
 }
 
-.retro-danger {
-    background: linear-gradient(180deg, #ff5f6d, #c63147);
-    border: 1px solid #ffb4be;
+.app-title{
+    font-size:20px;
+    font-weight:600;
+    color:white;
 }
 
-.retro-btn:hover,
-.retro-btn-alt:hover,
-.retro-danger:hover {
-    color: #fff;
+.username-pill{
 
-    transform: translateY(-1px) scale(1.02);
+    background:rgba(0,0,0,.25);
 
-    box-shadow: 0 6px 12px rgba(0,0,0,.35);
+    padding:6px 14px;
+
+    border-radius:999px;
+
+    color:white;
 }
 
-/* INPUTS */
+/* =========================
+   GLASS CARDS
+========================= */
 
-.retro-input,
-.retro-select,
-textarea.retro-input {
-    border-radius: 10px !important;
-    border: 2px solid #8bd3ff;
+.retro-card{
 
-    background: rgba(240,250,255,.96);
-    color: #1a2c4e;
+background:rgba(255,255,255,.88);
 
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.08);
+backdrop-filter:blur(6px);
+
+border-radius:18px;
+
+border:1px solid rgba(255,255,255,.85);
+
+box-shadow:
+0 12px 35px rgba(0,0,0,.20),
+inset 0 1px rgba(255,255,255,.9);
+
+padding:26px;
+
 }
 
-/* SELECT ARROW */
-
-.retro-select {
-    background-image:
-        linear-gradient(45deg, transparent 50%, #2970d8 50%),
-        linear-gradient(135deg, #2970d8 50%, transparent 50%),
-        linear-gradient(to right, rgba(117,206,255,.55), rgba(117,206,255,.55));
-
-    background-position:
-        calc(100% - 20px) calc(1em + 2px),
-        calc(100% - 15px) calc(1em + 2px),
-        calc(100% - 2.3rem) .25rem;
-
-    background-size:
-        5px 5px,
-        5px 5px,
-        1px 1.8rem;
-
-    background-repeat: no-repeat;
+.retro-card:hover{
+    transform:translateY(-2px);
 }
 
-/* BOOTSTRAP INPUT OVERRIDE */
+/* =========================
+   HEADINGS
+========================= */
 
-.form-control,
-.form-select,
-textarea {
-    border-radius: 12px !important;
-    background: rgba(255,255,255,.95);
+.retro-heading{
+
+    font-size:18px;
+    font-weight:600;
 }
 
-/* DASHBOARD */
+/* =========================
+   FORMS
+========================= */
 
-.dashboard-grid .add-expense-card {
-    min-height: 100%;
+label{
+    font-weight:500;
 }
 
-/* TABLE */
+input,
+select,
+textarea{
 
-.table-dark {
-    --bs-table-bg: rgba(22,32,48,.92);
-    --bs-table-striped-bg: rgba(37,49,67,.92);
-    --bs-table-border-color: rgba(126,232,255,.2);
+    width:100%;
+
+    padding:10px 12px;
+
+    border-radius:8px;
+
+    border:1px solid #b7c9e2;
+
+    background:white;
+
+    font-size:14px;
 }
 
-/* INSIGHT CARDS */
-
-.insight-card {
-    background: rgba(121,228,255,.16);
-    border: 1px solid #86ecff;
-
-    border-radius: 14px;
-    padding: .8rem;
+textarea{
+    resize:vertical;
 }
 
-/* CATEGORY BADGES */
+/* =========================
+   BUTTONS
+========================= */
 
-.category-badge {
-    font-size: .75rem;
+.retro-btn{
+
+    background:linear-gradient(#6bdc6b,#3aa63a);
+
+    border:none;
+
+    color:white;
+
+    padding:10px 16px;
+
+    border-radius:10px;
+
+    font-weight:500;
 }
 
-.cat-food { background: #1dd1a1; }
+.retro-btn-alt{
 
-.cat-transport { background: #54a0ff; }
+    background:linear-gradient(#5aa8ff,#2b6fe0);
 
-.cat-subscriptions { background: #f368e0; }
+    border:none;
 
-.cat-shopping {
-    background: #feca57;
-    color: #1c2235;
+    color:white;
+
+    padding:10px 16px;
+
+    border-radius:10px;
 }
 
-.cat-entertainment { background: #ff6b6b; }
+.retro-danger{
 
-.cat-utilities { background: #5f27cd; }
+background:#ff4d4d;
 
-.cat-other { background: #8395a7; }
+border:none;
 
-/* SAVED PROFILES */
+color:white;
 
-.saved-profiles {
-    border-top: 1px dashed rgba(126,232,255,.4);
-    padding-top: 1rem;
+padding:8px 14px;
+
+border-radius:10px;
+
+font-weight:500;
+
 }
 
-/* ALERT */
+/* =========================
+   TABLE
+========================= */
 
-.retro-alert {
-    border-radius: 10px;
-    border: 2px solid #f7ff7d;
+.table-dark{
 
-    background: rgba(255,255,255,.88);
+background:rgba(255,255,255,.75);
+
+border-radius:10px;
+
+color:#1d3557;
+
+}
+
+.table-dark thead{
+
+background:linear-gradient(#4aa3ff,#2a6ddf);
+
+color:white;
+
+}
+
+.table-dark tbody tr{
+
+background:rgba(255,255,255,.65);
+
+}
+
+.table-dark tbody tr:nth-child(even){
+
+background:rgba(240,245,255,.85);
+
+}
+
+/* =========================
+   DASHBOARD GRID
+========================= */
+
+.dashboard-grid{
+    align-items:start;
+}
+
+.add-expense-card{
+    height:fit-content;
+}
+
+/* =========================
+   INSIGHT CARDS
+========================= */
+
+.insight-card{
+
+    background:rgba(255,255,255,.55);
+
+    border-radius:10px;
+
+    border:1px solid rgba(255,255,255,.7);
+
+    padding:14px;
+}
+
+/* =========================
+   CATEGORY COLORS
+========================= */
+
+.cat-food{background:#35dd64;color:white}
+.cat-transport{background:#54a0ff;color:white}
+.cat-subscriptions{background:#f368e0;color:white}
+.cat-shopping{background:#feca57;color:#333}
+.cat-entertainment{background:#ff6b6b;color:white}
+.cat-utilities{background:#5f27cd;color:white}
+.cat-school{background:#051952;color:white}
+.cat-other{background:#8395a7;color:white}
+
+/* =========================
+   AUTH PAGE
+========================= */
+
+.auth-page{
+
+min-height:calc(100vh - 140px);
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+justify-content:flex-start;
+
+padding-top:0px;
+
+}
+
+/* =========================
+   CHART CANVAS
+========================= */
+
+canvas{
+    background:rgba(255,255,255,.35);
+    border-radius:10px;
+    padding:10px;
+}
+
+/* Snoopy alignment */
+
+.snoopy-bottom{
+
+margin-top:40px;
+
+width:100%;
+
+display:flex;
+
+justify-content:center;
+
+}
+
+.snoopy-img{
+
+width:100%;
+
+border-radius:12px;
+
+box-shadow:
+0 12px 30px rgba(0,0,0,.25);
+
+}
+
+/* AUTH PAGE LAYOUT */
+
+.auth-wrapper{
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+gap:12px;
+
+width:100%;
+
+max-width:620px;
+
+margin:auto;
+
+}
+.retro-alert{
+
+background:rgba(255,255,255,.65);
+
+border:none;
+
+backdrop-filter:blur(6px);
+
+box-shadow:0 8px 20px rgba(0,0,0,.15);
+
+}
+
+/* =========================
+   AUTH CARD GLOW (XP STYLE)
+========================= */
+
+.auth-card{
+    max-width:500px;
+    width:100%;
+    position:relative;
+    z-index:2;
+}
+
+/* glow layer */
+
+.auth-card::before{
+
+content:"";
+
+position:absolute;
+
+top:-40px;
+left:-40px;
+right:-40px;
+bottom:-40px;
+
+background:radial-gradient(
+circle,
+rgba(255,255,255,.55) 0%,
+rgba(255,255,255,.35) 40%,
+rgba(255,255,255,0) 75%
+);
+
+filter:blur(35px);
+
+z-index:-1;
+
+pointer-events:none;
+
+}
+
+.auth-page .alert{
+
+max-width:620px;
+
+margin:30px auto 10px auto;
+
+text-align:center;
+
+background:rgba(255,255,255,.7);
+
+backdrop-filter:blur(6px);
+
+border:none;
+
+box-shadow:0 8px 20px rgba(0,0,0,.15);
+
 }
