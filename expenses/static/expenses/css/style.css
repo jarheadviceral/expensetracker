@@ -1,84 +1,91 @@
 :root {
-    --wallpaper-image: url('https://upload.wikimedia.org/wikipedia/en/4/4c/Bliss_%28Windows_XP%29.png');
+    --wallpaper-image: url("images/bliss.jpg") center/cover no-repeat
+
     --bg-deep: #06193a;
     --bg-panel: rgba(9, 30, 66, 0.86);
+
     --cyan: #7ee8ff;
     --pink: #f088d8;
     --sky: #4bb6ff;
     --electric: #2286ff;
+
     --text: #eaf5ff;
 }
 
-/* Background customization
-   - Replace --wallpaper-image with your own image path in /static/expenses/images/
-   - The pseudo-layer keeps the image fixed, blurred, and behind all content. */
+/* BASE PAGE */
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     min-height: 100vh;
     color: var(--text);
-    background: linear-gradient(180deg, rgba(13, 58, 105, 0.48), rgba(80, 95, 145, 0.62));
+
+    background-image:
+        linear-gradient(rgba(13, 42, 71, 0.55), rgba(20, 10, 60, 0.65)),
+        var(--wallpaper-image);
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
+
+/* FIXED BLURRED WALLPAPER */
 
 .bg-wallpaper {
     position: fixed;
     inset: 0;
     z-index: -2;
+
     background-image: var(--wallpaper-image);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+
     filter: blur(5px) saturate(1.05);
     transform: scale(1.05);
 }
 
+/* TOP BAR */
+
 .topbar {
     background: linear-gradient(180deg, #36a5ff, #1872dc);
     border-bottom: 3px solid var(--cyan);
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-image: linear-gradient(rgba(13, 42, 71, 0.55), rgba(20, 10, 60, 0.65)),
-        url('https://upload.wikimedia.org/wikipedia/en/4/4c/Bliss_%28Windows_XP%29.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    min-height: 100vh;
-    color: #f1f7ff;
-}
-
-.topbar {
-    background: linear-gradient(90deg, #0457bf, #4f9eff);
-    border-bottom: 3px solid #76e6ff;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.45);
     padding: 14px 0;
 }
 
+/* HEADINGS */
+
 .app-title,
 .retro-heading {
-    font-family: 'Press Start 2P', cursive;
+    font-family: "Press Start 2P", cursive;
     text-shadow: 2px 2px #031737;
 }
 
-.app-title { font-size: 1rem; }
-.retro-heading { font-size: .9rem; color: #ffe88e; }
-.retro-heading.small { font-size: .72rem; }
+.app-title {
+    font-size: 1rem;
+}
+
+.retro-heading {
+    font-size: .9rem;
+    color: #ffe88e;
+}
+
+.retro-heading.small {
+    font-size: .72rem;
+}
+
+/* USERNAME */
 
 .username-pill {
     background: #04265e;
     border: 2px solid var(--cyan);
-    text-shadow: 2px 2px #021734;
-}
-
-.app-title { font-size: 1rem; }
-.retro-heading { font-size: .9rem; color: #ffec85; }
-.retro-heading.small { font-size: .72rem; }
-
-.username-pill {
-    background: #001f4a;
-    border: 2px solid #76e6ff;
     border-radius: 999px;
     padding: 6px 14px;
     font-weight: bold;
+    text-shadow: 2px 2px #021734;
 }
+
+/* PAGE LAYOUT */
 
 .page-content {
     position: relative;
@@ -87,31 +94,37 @@ body {
 
 .auth-page {
     min-height: calc(100vh - 145px);
+
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+/* RETRO CARD */
+
 .retro-card {
     background: var(--bg-panel);
     border: 2px solid var(--cyan);
     border-radius: 18px;
-    box-shadow: 0 0 0 3px rgba(240, 136, 216, 0.65), 0 16px 30px rgba(0, 0, 0, 0.35);
-    backdrop-filter: blur(2px);
-.retro-card {
-    background: rgba(2, 21, 46, 0.8);
-    border: 2px solid #82e7ff;
-    border-radius: 18px;
-    box-shadow: 0 0 0 3px rgba(255, 96, 188, 0.5), 0 16px 30px rgba(0, 0, 0, 0.35);
+
+    box-shadow:
+        0 0 0 3px rgba(240,136,216,.65),
+        0 16px 30px rgba(0,0,0,.35);
+
     backdrop-filter: blur(3px);
 }
+
+/* BUTTONS */
 
 .retro-btn,
 .retro-btn-alt,
 .retro-danger {
     border-radius: 14px;
     color: #fff;
-    transition: transform .2s ease, box-shadow .2s ease;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
 }
 
 .retro-btn {
@@ -120,19 +133,11 @@ body {
 }
 
 .retro-btn-alt {
-    background: linear-gradient(180deg, #59b4ff, #2b67d4);
-    background: linear-gradient(180deg, #ff3cac, #784ba0);
-    border: 1px solid #ffb2ee;
-}
-
-.retro-btn-alt {
     background: linear-gradient(180deg, #3f8cff, #2450b8);
     border: 1px solid #b9d6ff;
 }
 
 .retro-danger {
-    background: linear-gradient(180deg, #ff7885, #d5395f);
-    border: 1px solid #ffc0cc;
     background: linear-gradient(180deg, #ff5f6d, #c63147);
     border: 1px solid #ffb4be;
 }
@@ -141,88 +146,115 @@ body {
 .retro-btn-alt:hover,
 .retro-danger:hover {
     color: #fff;
+
     transform: translateY(-1px) scale(1.02);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35);
+
+    box-shadow: 0 6px 12px rgba(0,0,0,.35);
 }
+
+/* INPUTS */
 
 .retro-input,
 .retro-select,
 textarea.retro-input {
     border-radius: 10px !important;
     border: 2px solid #8bd3ff;
-    background: rgba(240, 250, 255, 0.96);
+
+    background: rgba(240,250,255,.96);
     color: #1a2c4e;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
+
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.08);
 }
+
+/* SELECT ARROW */
 
 .retro-select {
     background-image:
         linear-gradient(45deg, transparent 50%, #2970d8 50%),
         linear-gradient(135deg, #2970d8 50%, transparent 50%),
-        linear-gradient(to right, rgba(117, 206, 255, 0.55), rgba(117, 206, 255, 0.55));
+        linear-gradient(to right, rgba(117,206,255,.55), rgba(117,206,255,.55));
+
     background-position:
         calc(100% - 20px) calc(1em + 2px),
         calc(100% - 15px) calc(1em + 2px),
-        calc(100% - 2.3rem) 0.25rem;
-    background-size: 5px 5px, 5px 5px, 1px 1.8rem;
+        calc(100% - 2.3rem) .25rem;
+
+    background-size:
+        5px 5px,
+        5px 5px,
+        1px 1.8rem;
+
     background-repeat: no-repeat;
 }
+
+/* BOOTSTRAP INPUT OVERRIDE */
+
+.form-control,
+.form-select,
+textarea {
+    border-radius: 12px !important;
+    background: rgba(255,255,255,.95);
+}
+
+/* DASHBOARD */
 
 .dashboard-grid .add-expense-card {
     min-height: 100%;
 }
 
+/* TABLE */
+
 .table-dark {
-    --bs-table-bg: rgba(22, 32, 48, 0.92);
-    --bs-table-striped-bg: rgba(37, 49, 67, 0.92);
-    --bs-table-border-color: rgba(126, 232, 255, 0.2);
+    --bs-table-bg: rgba(22,32,48,.92);
+    --bs-table-striped-bg: rgba(37,49,67,.92);
+    --bs-table-border-color: rgba(126,232,255,.2);
 }
 
-.insight-card {
-    background: rgba(126, 232, 255, 0.16);
-    border: 1px solid var(--cyan);
-.form-control,
-.form-select,
-textarea {
-    border-radius: 12px !important;
-    background: rgba(255, 255, 255, 0.95);
-}
+/* INSIGHT CARDS */
 
 .insight-card {
-    background: rgba(121, 228, 255, 0.16);
+    background: rgba(121,228,255,.16);
     border: 1px solid #86ecff;
+
     border-radius: 14px;
     padding: .8rem;
 }
 
-.category-badge { font-size: 0.75rem; }
-.cat-food { background: #43cf9f; }
-.cat-transport { background: #54a8ff; }
-.cat-subscriptions { background: #d56fff; }
-.cat-shopping { background: #ffd56b; color: #1c2235; }
-.cat-entertainment { background: #ff7f8f; }
-.cat-utilities { background: #6f7cff; }
-.cat-other { background: #89a4c8; }
+/* CATEGORY BADGES */
+
+.category-badge {
+    font-size: .75rem;
+}
+
+.cat-food { background: #1dd1a1; }
+
+.cat-transport { background: #54a0ff; }
+
+.cat-subscriptions { background: #f368e0; }
+
+.cat-shopping {
+    background: #feca57;
+    color: #1c2235;
+}
+
+.cat-entertainment { background: #ff6b6b; }
+
+.cat-utilities { background: #5f27cd; }
+
+.cat-other { background: #8395a7; }
+
+/* SAVED PROFILES */
 
 .saved-profiles {
-    border-top: 1px dashed rgba(126, 232, 255, 0.4);
+    border-top: 1px dashed rgba(126,232,255,.4);
     padding-top: 1rem;
 }
 
-.retro-alert {
-    border-radius: 10px;
-    border: 2px solid #fbff92;
-    background: rgba(255, 255, 255, 0.9);
-.cat-food { background: #1dd1a1; }
-.cat-transport { background: #54a0ff; }
-.cat-subscriptions { background: #f368e0; }
-.cat-shopping { background: #feca57; color: #1c2235; }
-.cat-entertainment { background: #ff6b6b; }
-.cat-utilities { background: #5f27cd; }
-.cat-other { background: #8395a7; }
+/* ALERT */
 
 .retro-alert {
     border-radius: 10px;
     border: 2px solid #f7ff7d;
-    background: rgba(255, 255, 255, 0.88);
+
+    background: rgba(255,255,255,.88);
 }
