@@ -7,31 +7,38 @@
 
 <div class="auth-wrapper">
 
-    <section class="retro-card auth-card">
+<section class="retro-card auth-card">
 
-        <h2 class="retro-heading mb-3 text-center">
-            Create your profile
-        </h2>
+<h2 class="retro-heading mb-3 text-center">
+Create your profile
+</h2>
 
-        <p class="text-center mb-4">
-            Set your username to start tracking your expenses!
-        </p>
+<p class="text-center mb-4">
+Set your username to start tracking your expenses!
+</p>
 
-        <form method="post">
-            {% csrf_token %}
+<form method="post">
+{% csrf_token %}
 
-            <div class="mb-3">
-                <label class="form-label">Username</label>
-                {{ form.username }}
-            </div>
+<div class="mb-3">
+<label class="form-label">Username</label>
 
-            <button class="btn retro-btn w-100" type="submit">
-                Enter Dashboard
-            </button>
+<input
+type="text"
+name="username"
+class="form-control retro-input"
+placeholder="Enter your name"
+required>
 
-        </form>
+</div>
 
-    </section>
+<button class="btn retro-btn w-100" type="submit">
+Start
+</button>
+
+</form>
+
+</section>
 
 </div>
 
