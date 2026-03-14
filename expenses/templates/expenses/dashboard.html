@@ -83,7 +83,6 @@
 <table class="table table-striped align-middle">
 
 <thead>
-
 <tr>
 <th>Date</th>
 <th>Item</th>
@@ -91,7 +90,6 @@
 <th>Price</th>
 <th>Actions</th>
 </tr>
-
 </thead>
 
 <tbody>
@@ -191,6 +189,9 @@ Change vs Last Month:
 
 </section>
 
+{{ category_totals_json|json_script:"category-data" }}
+{{ monthly_data_json|json_script:"monthly-data" }}
+
 <section class="retro-card">
 
 <h3 class="retro-heading">Site Stats</h3>
@@ -230,9 +231,6 @@ Current Month Spend:
 </div>
 
 </div>
-
-{{ category_totals_json|json_script:"category-data" }}
-{{ monthly_data_json|json_script:"monthly-data" }}
 
 {% endblock %}
 
