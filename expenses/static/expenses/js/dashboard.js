@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!categoryNode || !monthlyNode) return;
 
-    const categoryData = JSON.parse(categoryNode.textContent || "[]");
-    const monthlyData = JSON.parse(monthlyNode.textContent || "[]");
+    const categoryData = JSON.parse(categoryNode.textContent);
+    const monthlyData = JSON.parse(monthlyNode.textContent);
 
     /* =============================
        PIE CHART (CATEGORY SPENDING)
