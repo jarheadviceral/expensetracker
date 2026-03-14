@@ -105,7 +105,7 @@ def dashboard(request):
     )
 
     category_totals = [
-        {"category": row["category"].title(), "total": float(row["total"])}
+        {"category": row["category"], "total": float(row["total"])}
         for row in category_totals_qs
     ]
 

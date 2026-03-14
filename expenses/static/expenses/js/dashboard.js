@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const pieCanvas = document.getElementById("categoryPie");
 
-    if (pieCanvas && categoryData.length) {
+    if (pieCanvas) {
 
         new Chart(pieCanvas, {
 
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const lineCanvas = document.getElementById("monthlyLine");
 
-    if (lineCanvas && monthlyData.length) {
+    if (lineCanvas) {
 
         new Chart(lineCanvas, {
 
