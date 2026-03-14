@@ -197,6 +197,10 @@ Change vs Last Month:
 
 
 <!-- SITE STATS + CHARTS -->
+
+{{ category_totals_json|json_script:"category-data" }}
+{{ monthly_data_json|json_script:"monthly-data" }}
+
 <section class="retro-card">
 
 <h3 class="retro-heading">Site Stats</h3>
@@ -240,9 +244,6 @@ Current Month Spend:
 {% endblock %}
 
 {% block scripts %}
-
-{{ category_totals_json|json_script:"category-data" }}
-{{ monthly_data_json|json_script:"monthly-data" }}
 
 <script src="{% static 'expenses/js/dashboard.js' %}"></script>
 
