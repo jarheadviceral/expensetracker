@@ -16,8 +16,8 @@ def username_view(request):
 
     profile_id = request.session.get("profile_id")
 
-    # If profile already exists, go to dashboard
     if profile_id:
+        profile = Profile.objects.get(id=profile_id)
         return redirect("dashboard")
 
     if request.method == "POST":

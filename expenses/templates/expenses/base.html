@@ -23,12 +23,12 @@
 
 <div class="container d-flex justify-content-between align-items-center">
 
-<h1 class="app-title mb-0">XPense Tracker.zip</h1>
+<h1 class="app-title mb-0">XPense Tracker</h1>
 
 <div class="d-flex align-items-center gap-2">
 
 <div class="username-pill">
-{{ request.session.username|default:"Guest" }}
+{{ username|default:"Guest" }}
 </div>
 
 {% if request.session.username %}

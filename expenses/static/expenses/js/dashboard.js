@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     tooltip: {
                         callbacks: {
                             label: function(context) {
-                                return `$${context.raw.toFixed(2)}`;
+                                return `₱${context.raw.toFixed(2)}`;
                             }
                         }
                     }
@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     y: {
                         beginAtZero: true,
                         ticks: {
-                            callback: value => "$" + value
+                            callback: value => "₱" + value
                         }
                     }
 
