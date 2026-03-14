@@ -1,10 +1,12 @@
 from django.contrib import admin
+from .models import Expense, Profile
 
-from .models import Expense
+
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('name', 'created_at')
 
 
 @admin.register(Expense)
 class ExpenseAdmin(admin.ModelAdmin):
-    list_display = ('item_name', 'category', 'amount', 'date_created', 'username')
-    list_filter = ('category', 'date_created')
-    search_fields = ('item_name', 'category', 'username')
+    list_display = ('item_name', 'category', 'amount', 'date_created', 'profile')
