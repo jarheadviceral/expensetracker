@@ -162,8 +162,8 @@ def dashboard(request):
         "top_category": top_category,
         "average_daily": average_daily,
         "spending_change": spending_change,
-        "category_totals_json": json.dumps(category_totals),
-        "monthly_data_json": json.dumps(monthly_data),
+        "category_totals_json": category_totals,
+        "monthly_data_json": monthly_data,
         "stats": stats,
     }
 
