@@ -302,7 +302,7 @@ background:rgba(240,245,255,.85);
    CATEGORY COLORS
 ========================= */
 
-badge{
+.badge{
 display:inline-block;
 padding:4px 10px;
 border-radius:999px;
