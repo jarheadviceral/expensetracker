@@ -52,6 +52,45 @@
 
 </section>
 
+<!-- SPENDING INSIGHTS -->
+<section class="retro-card mb-4">
+
+<h3 class="retro-heading">Spending Insights</h3>
+
+<div class="row g-3 mt-1">
+
+<div class="col-md-6">
+<div class="insight-card">
+Total Spending:
+<strong>₱{{ total_spending|floatformat:2 }}</strong>
+</div>
+</div>
+
+<div class="col-md-6">
+<div class="insight-card">
+Top Category:
+<strong>{{ top_category }}</strong>
+</div>
+</div>
+
+<div class="col-md-6">
+<div class="insight-card">
+Avg Daily:
+<strong>₱{{ average_daily|floatformat:2 }}</strong>
+</div>
+</div>
+
+<div class="col-md-6">
+<div class="insight-card">
+Change vs Last Month:
+<strong>₱{{ spending_change|floatformat:2 }}</strong>
+</div>
+</div>
+
+</div>
+
+</section>
+
 <div class="snoopy-bottom">
 <img src="{% static 'expenses/images/snoopy.jpg' %}"
 alt="Snoopy Dollar"
@@ -59,7 +98,6 @@ class="snoopy-img">
 </div>
 
 </div>
-
 
 <!-- RIGHT COLUMN -->
 <div class="col-lg-8">
@@ -154,47 +192,6 @@ No expenses in this range.
 </div>
 
 </section>
-
-
-<!-- SPENDING INSIGHTS -->
-<section class="retro-card mb-4">
-
-<h3 class="retro-heading">Spending Insights</h3>
-
-<div class="row g-3 mt-1">
-
-<div class="col-md-6">
-<div class="insight-card">
-Total Spending:
-<strong>₱{{ total_spending|floatformat:2 }}</strong>
-</div>
-</div>
-
-<div class="col-md-6">
-<div class="insight-card">
-Top Category:
-<strong>{{ top_category }}</strong>
-</div>
-</div>
-
-<div class="col-md-6">
-<div class="insight-card">
-Avg Daily:
-<strong>₱{{ average_daily|floatformat:2 }}</strong>
-</div>
-</div>
-
-<div class="col-md-6">
-<div class="insight-card">
-Change vs Last Month:
-<strong>₱{{ spending_change|floatformat:2 }}</strong>
-</div>
-</div>
-
-</div>
-
-</section>
-
 
 <!-- SITE STATS + CHARTS -->
 
