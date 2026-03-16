@@ -302,14 +302,22 @@ background:rgba(240,245,255,.85);
    CATEGORY COLORS
 ========================= */
 
-.cat-food{background:#35dd64;color:white}
-.cat-transport{background:#54a0ff;color:white}
-.cat-subscriptions{background:#f368e0;color:white}
-.cat-shopping{background:#feca57;color:#333}
-.cat-entertainment{background:#ff6b6b;color:white}
-.cat-utilities{background:#5f27cd;color:white}
-.cat-school{background:#051952;color:white}
-.cat-other{background:#8395a7;color:white}
+badge{
+display:inline-block;
+padding:4px 10px;
+border-radius:999px;
+font-size:12px;
+font-weight:500;
+}
+
+.badge.cat-food{background:#68c0f3 ;color:white}
+.badge.cat-transport{background:#ea861c;color:white}
+.badge.cat-subscriptions{background:#18923a;color:white}
+.badge.cat-shopping{background:#f7c55a;color:#333}
+.badge.cat-entertainment{background:#ff6b6b;color:white}
+.badge.cat-utilities{background:#663bbd;color:white}
+.badge.cat-school{background:#051952;color:white}
+.badge.cat-other{background:#8395a7;color:white}
 
 /* =========================
    AUTH PAGE
