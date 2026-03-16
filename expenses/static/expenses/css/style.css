@@ -165,7 +165,7 @@ padding:26px;
 ========================= */
 
 label{
-    font-weight:500;
+    font-weight:400;
 }
 
 input,
@@ -205,7 +205,7 @@ textarea{
 
     border-radius:10px;
 
-    font-weight:500;
+    font-weight:300;
 }
 
 .retro-btn-alt{
@@ -233,7 +233,7 @@ padding:8px 14px;
 
 border-radius:10px;
 
-font-weight:500;
+font-weight:300;
 
 }
 
@@ -340,31 +340,6 @@ canvas{
     background:rgba(255,255,255,.35);
     border-radius:10px;
     padding:10px;
-}
-
-/* Snoopy alignment */
-
-.snoopy-bottom{
-
-margin-top:30px;
-
-width:100%;
-
-display:flex;
-
-justify-content:center;
-
-}
-
-.snoopy-img{
-
-width:100%;
-
-border-radius:12px;
-
-box-shadow:
-0 12px 30px rgba(0,0,0,.25);
-
 }
 
 /* AUTH PAGE LAYOUT */
