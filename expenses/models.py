@@ -17,14 +17,14 @@ class Profile(models.Model):
 class Expense(models.Model):
 
     CATEGORY_CHOICES = [
-        ('Food', 'Food'),
-        ('Transport', 'Transport'),
-        ('Subscriptions', 'Subscriptions'),
-        ('Shopping', 'Shopping'),
-        ('Entertainment', 'Entertainment'),
-        ('Utilities', 'Utilities'),
-        ('School', 'School'),
-        ('Other', 'Other'),
+        ('food', 'Food'),
+        ('transport', 'Transport'),
+        ('subscriptions', 'Subscriptions'),
+        ('shopping', 'Shopping'),
+        ('entertainment', 'Entertainment'),
+        ('utilities', 'Utilities'),
+        ('school', 'School'),
+        ('other', 'Other'),
     ]
 
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
