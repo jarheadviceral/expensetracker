@@ -76,16 +76,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'retro_expense_tracker.wsgi.application'
 
 
-# DATABASE
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-
 # PASSWORD VALIDATION
 
 AUTH_PASSWORD_VALIDATORS = [
