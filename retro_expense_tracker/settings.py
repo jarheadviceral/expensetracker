@@ -76,24 +76,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'retro_expense_tracker.wsgi.application'
 
 
-# PASSWORD VALIDATION
-
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-]
-
-
 # INTERNATIONALIZATION
 
 LANGUAGE_CODE = 'en-us'
