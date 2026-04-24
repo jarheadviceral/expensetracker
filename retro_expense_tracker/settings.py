@@ -2,25 +2,23 @@ from pathlib import Path
 import dj_database_url
 import os
 
-DATABASES = {
-    "default": dj_database_url.config(
-        default=os.environ.get("DATABASE_URL"),
-        conn_max_age=600
-    )
-}
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+# ========================
 # SECURITY
-SECRET_KEY = 'replace-this-with-a-random-secret-key'
+# ========================
+
+SECRET_KEY = os.environ.get("SECRET_KEY", "unsafe-secret-key")
 
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
 
+# ========================
 # APPLICATIONS
+# ========================
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -34,11 +32,15 @@ INSTALLED_APPS = [
 ]
 
 
+# ========================
 # MIDDLEWARE
+# ========================
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+
+    # ❌ REMOVE whitenoise for Vercel
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
 
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -49,17 +51,23 @@ MIDDLEWARE = [
 ]
 
 
+# ========================
+# URLS / WSGI
+# ========================
+
 ROOT_URLCONF = 'retro_expense_tracker.urls'
+WSGI_APPLICATION = 'retro_expense_tracker.wsgi.application'
 
 
+# ========================
 # TEMPLATES
+# ========================
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
         'APP_DIRS': True,
-
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -73,35 +81,36 @@ TEMPLATES = [
 ]
 
 
-WSGI_APPLICATION = 'retro_expense_tracker.wsgi.application'
+# ========================
+# DATABASE (PostgreSQL)
+# ========================
+
+DATABASES = {
+    "default": dj_database_url.config(
+        default=os.environ.get("DATABASE_URL"),
+        conn_max_age=600
+    )
+}
 
 
+# ========================
+# PASSWORD VALIDATION
+# ========================
+
+AUTH_PASSWORD_VALIDATORS = []
+
+
+# ========================
 # INTERNATIONALIZATION
+# ========================
 
 LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
+TIME_ZONE = 'Asia/Manila'
 USE_I18N = True
 USE_TZ = True
 
-
-# STATIC FILES
-
-STATIC_URL = '/static/'
-
-STATICFILES_DIRS = [
-    BASE_DIR / "expenses/static",
-]
-
-STATIC_ROOT = BASE_DIR / "staticfiles"
-
-
-# WHITENOISE
-
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
-
+# ========================
 # DEFAULT PRIMARY KEY
+# ========================
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
