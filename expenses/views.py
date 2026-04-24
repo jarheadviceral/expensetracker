@@ -233,4 +233,4 @@ def expense_delete(request, expense_id):
 
 def switch_profile(request):
     request.session.flush()
-    return redirect('home')
+    return redirect("username-entry")
