@@ -13,7 +13,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="{% static 'expenses/css/style.css' %}">
+<link rel="stylesheet" href="/static/expenses/css/style.css">
 
 </head>
 
@@ -31,7 +31,7 @@
 {{ username|default:"Guest" }}
 </div>
 
-{% if request.session.username %}
+{% if username %}
 
 <form method="post" action="{% url 'switch-profile' %}">
 {% csrf_token %}
