@@ -230,3 +230,7 @@ def expense_delete(request, expense_id):
         messages.success(request, "Expense deleted!")
 
     return redirect("dashboard")
+
+def switch_profile(request):
+    request.session.flush()
+    return redirect('home')
